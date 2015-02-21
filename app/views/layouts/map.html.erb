@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Tweetly.me" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tweetly.me is for tweets near you" %>">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+<style>
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px }
+#container { width: 100%; height: 100% }
+#nav { z-index: 100; position: absolute; 
+       margin: 10px 0px 0px 200px; background-color: #fff; 
+       border: 1px #000 Solid; padding: 5px; }
+#map { width: 100%; height: 100% }
+</style>
+</head>
+<body>
+
+
+<div id="container">
+    <div id="nav">Tweetly.me</div>
+    <div id="map">
+
+
+  <%= render 'layouts/messages' %>
+  <%= yield %>        
+  <!-- Footer -->
+
+  </div>
+</div>
+</body>
+</html>

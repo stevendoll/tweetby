@@ -20,6 +20,11 @@ module Tweetby
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+    # http://stackoverflow.com/questions/4982073/different-layout-for-sign-in-action-in-devise
+    config.to_prepare do
+        MapDisplayController.layout "map"
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map_display/index'
+
   #get 'map_display/index'
 
   #get 'home/index'
