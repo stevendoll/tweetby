@@ -44,6 +44,8 @@ class UsersController < ApplicationController
 
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
+    # if get just show the view
+    # if patch perform the action below
     authorize @user, :update?
     if request.patch? && params[:user] && params[:user][:email]
       if @user.update_attributes(signup_params)
@@ -53,8 +55,6 @@ class UsersController < ApplicationController
       else
         @show_errors = true
       end
-    # else
-    #   render action: 'finish_signup', notice: 'not updated.'
     end
   end
 
@@ -75,11 +75,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_params
-    accessible = [ :role, :name, :email, :authentication_token, :current_password, :first_name, :last_name, :phone, :description, :avatar, :invitation_code, :tag_list ] # extend with your own params
-    accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-    params.require(:user).permit(accessible)
-  end
+  # def user_params
+  #   accessible = [ :role, :name, :email, :authentication_token, :current_password, :first_name, :last_name, :phone, :description, :avatar, :invitation_code, :tag_list ] # extend with your own params
+  #   accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
+  #   params.require(:user).permit(accessible)
+  # end
 
   def signup_params
     params.require(:user).permit(:email)
